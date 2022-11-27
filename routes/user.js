@@ -16,7 +16,8 @@ router.get(
 router.get(
     "/login",
     passport.authenticate("google"),{
-        successRedirect:prcess.env.FRONTEND_URL
+        // successRedirect:prcess.env.FRONTEND_URL
+        successRedirect:process.env.FRONTEND_URL
     }
     
 )

@@ -3,7 +3,8 @@ import { Order } from "../models/Order.js";
 import { Payment } from "../models/Payment.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import { instance } from "../server.js";
-import crypto from "crypto-js"
+// import crypto from "crypto-js"
+import crypto from "crypto"
 export const placeOrder = asyncError(async (req, res, next) => {
   const {
     shippingInfo,
@@ -146,7 +147,7 @@ export const getAdminOrders = asyncError(async (req, res, next) => {
 });
 
 export const processOrder = asyncError(async (req, res, next) => {
-  const order = await Order.findById(req.params.id).populate("user", "name");
+  const order = await Order.findById(req.params.id)
 
   if (!order) return next(new ErrorHandler("Invalid Order Id", 404));
   if (order.orderStatus === "Preparing") order.orderStatus = "Shipped";

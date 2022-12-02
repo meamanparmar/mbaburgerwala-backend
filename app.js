@@ -1,10 +1,9 @@
 import express, { urlencoded } from 'express';
 import dotenv from "dotenv";
-// import { Passport } from 'passport';
 import {connectPassport} from "./utils/Provider.js"
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
-import passport, { Passport } from 'passport';
+import passport from 'passport';
 import { errorMiddleware } from './middlewares/errorMiddleware.js';
 import cors from "cors"
 

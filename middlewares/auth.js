@@ -2,17 +2,14 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 
 export const isAuthenticated = (req, res, next) => {
   const token = req.cookies["connect.sid"];
-  
-  if(!token){
-    return next(new ErrorHandler("Not logged In",401))
+  if (!token) {
+    return next(new ErrorHandler("Not Logged In", 405));
   }
   next();
 };
-
 export const authorizedAdmin = (req, res, next) => {
-  if(req.user.role!=="admin"){
-    return next(new ErrorHandler("Only admin allowed",405))
+  if (req.user.role !== "admin") {
+    return next(new ErrorHandler("Only Admin Allowed", 405));
   }
   next();
 };
-

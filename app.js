@@ -6,7 +6,8 @@ import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import { errorMiddleware } from './middlewares/errorMiddleware.js';
 import cors from "cors"
-
+import cookieSession from "cookie-session"
+// const cookieSession = require('cookie-session')
 
 const app=express();
 export default app;
@@ -14,6 +15,9 @@ export default app;
 dotenv.config({
     path:"./config/config.env"
 })
+
+
+
 
 
 //using middleware
@@ -51,6 +55,7 @@ connectPassport();
 //Importing Routes
 import userRoute from "./routes/user.js"
 import orderRoute from "./routes/order.js"
+ 
 
 app.use("/api/v1",userRoute)
 app.use("/api/v1",orderRoute)

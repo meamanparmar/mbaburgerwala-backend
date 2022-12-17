@@ -4,7 +4,16 @@ import passport from "passport";
 import { authorizedAdmin, isAuthenticated } from "../middlewares/auth.js";
 const router=express.Router();
 
-
+router.get("/login/success", (req, res) => {
+  if (req.user) {
+    res.status(200).json({
+      success: true,
+      message: "successfull",
+      user: req.user,
+      //   cookies: req.cookies
+    });
+  }
+});
 router.get(
     "/googlelogin",
     passport.authenticate("google",{

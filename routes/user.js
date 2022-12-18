@@ -3,13 +3,7 @@ import {  getAdminStats, getAdminUsers, logout, myProfile } from "../controllers
 import passport from "passport";
 import { authorizedAdmin, isAuthenticated } from "../middlewares/auth.js";
 const router=express.Router();
-router.get("/", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*")
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
-   });
+
 router.get("/login/success", (req, res) => {
   if (req.user) {
     res.status(200).json({

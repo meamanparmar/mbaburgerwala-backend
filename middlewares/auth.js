@@ -1,5 +1,11 @@
 import ErrorHandler from "../utils/ErrorHandler.js";
-
+import cors from "cors"
+import app from "../app.js";
+app.use(function (req,res,next){
+  res.header("Access-Control-Allow-Origin","*")
+  res.header("Access-Control-Allow-Headers","Origin , X-Requested-With , Content-Type ,Accept")
+  next()
+})
 export const isAuthenticated = (req, res, next) => {
   const token = req.cookies["connect.sid"];
   if (!token) {
